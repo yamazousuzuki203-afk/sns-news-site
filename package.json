@@ -1,15 +1,10 @@
 {
   "name": "sns-news-site",
-  "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "start": "serve ."
   },
   "dependencies": {
-    "astro": "^4.0.0"
+    "serve": "^14.2.0"
   }
 }
