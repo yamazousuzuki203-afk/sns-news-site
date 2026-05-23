@@ -3,70 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNS TREND NEWS - 最新トレンドまとめ</title>
+    <title>SNSトレンドニュース速報</title>
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.8; color: #333; margin: 0; padding: 0; background-color: #f8f9fa; }
-        header { background-color: #111; color: #fff; padding: 25px 0; text-align: center; border-bottom: 4px solid #ff3b30; }
-        header h1 { margin: 0; font-size: 32px; letter-spacing: 2px; }
-        header p { margin: 5px 0 0 0; font-size: 13px; color: #aaa; }
-        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        .article-list-box { background: #fff; padding: 35px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        .article-list-box h2 { font-size: 22px; color: #111; margin-top: 0; border-left: 5px solid #ff3b30; padding-left: 15px; margin-bottom: 25px; }
-        ul.news-list { list-style: none; padding: 0; margin: 0; }
-        ul.news-list li { padding: 15px 0; border-bottom: 1px solid #eee; font-size: 16px; display: flex; align-items: baseline; }
-        ul.news-list li:last-child { border-bottom: none; }
-        ul.news-list li .date { color: #888; font-size: 13px; margin-right: 15px; font-family: monospace; white-space: nowrap; }
-        ul.news-list li a { color: #111; text-decoration: none; font-weight: bold; transition: color 0.2s; line-height: 1.4; }
-        ul.news-list li a:hover { color: #ff3b30; text-decoration: underline; }
-        .notice-box { background-color: #f1f3f5; border: 1px solid #dee2e6; padding: 20px; border-radius: 6px; font-size: 14px; color: #666; }
-        footer { text-align: center; padding: 40px 0; color: #999; font-size: 12px; border-top: 1px solid #eee; margin-top: 20px; }
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --text-color: #e0e0e0; --accent-color: #ff4500; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { text-align: center; color: #fff; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; font-size: 24px; }
+        .loading { text-align: center; font-size: 16px; color: #aaa; margin-top: 50px; }
+        .article-card { background: var(--card-bg); border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); border-left: 5px solid var(--accent-color); }
+        .article-title { font-size: 18px; margin-top: 0; margin-bottom: 10px; color: #fff; font-weight: bold; }
+        .article-meta { font-size: 12px; color: #888; margin-bottom: 15px; }
+        .article-body { font-size: 15px; line-height: 1.7; white-space: pre-wrap; color: #ccc; }
+        .video-prompt-box { background: #2a2a2a; padding: 10px; border-radius: 4px; font-size: 12px; margin-top: 15px; border: 1px dashed #444; }
+        .video-prompt-title { font-weight: bold; color: var(--accent-color); margin-bottom: 5px; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>SNS TREND NEWS</h1>
-        <p>独自の多角的な視点で分析・配信するトレンドニュースメディア</p>
-    </header>
     <div class="container">
-        <div class="article-list-box">
-            <h2>主要ニュース・タイムライン</h2>
-            <ul class="news-list">
-            <li><span class="date">[2026/5/23]</span> <a href="news_1779534493.html">TikTokで話題の『リバウンドダイエット』</a></li>
-            <li><span class="date">[2026/5/23]</span> <a href="news_1779507024.html">TikTokで大流行！新しい美容トレンド</a></li>
-            <li><span class="date">[2026/5/23]</span> <a href="news_1779498453.html">TikTokで大流行！新しい美容トレンド</a></li>
-            <li><span class="date">[2026/5/23]</span> <a href="news_1779487899.html">TikTokでバズった『リバース美容』の真実</a></li>
-            <li><span class="date">[2026/5/22]</span> <a href="news_1779448093.html">TikTokで大流行！最新の美容トレンド</a></li>
-            <li><span class="date">[2026/5/22]</span> <a href="news_1779420624.html">TikTokで大流行の新美容法</a></li>
-            <li><span class="date">[2026/5/22]</span> <a href="news_1779412052.html">炎上YouTuberの闇</a></li>
-            <li><span class="date">[2026/5/22]</span> <a href="news_1779401499.html">TikTokで大流行！最新美容トレンド</a></li>
-            <li><span class="date">[2026/5/21]</span> <a href="news_1779361693.html">TikTokで大流行中の最新美容トレンド</a></li>
-            <li><span class="date">[2026/5/21]</span> <a href="news_1779334228.html">TikTok美女の衝撃のカラダ</a></li>
-            <li><span class="date">[2026/5/21]</span> <a href="news_1779325656.html">TikTokで大流行！新しい美容トレンド</a></li>
-            <li><span class="date">[2026/5/21]</span> <a href="news_1779315098.html">美容トレンド炸裂！インスタで話題の『グラススキン』</a></li>
-            <li><span class="date">[2026/5/20]</span> <a href="news_1779275295.html">TikTokデビューが大炎上！人気アイドルが投稿した『恥ずかしい』動画</a></li>
-            <li><span class="date">[2026/5/20]</span> <a href="news_1779247828.html">衝撃の美容トレンド</a></li>
-            <li><span class="date">[2026/5/20]</span> <a href="news_1779239254.html">TikTokでバズっている新美容法</a></li>
-            <li><span class="date">[2026/5/20]</span> <a href="news_1779228697.html">TikTokで大流行中！新世代の美容革命</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779189510.html">都内大規模道路規制</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779189463.html">都内大規模道路規制の最新情報</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779189424.html">都内大規模道路規制</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779188894.html">TikTokで大流行！新たな美容トレンド</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779187108.html">BreakingDown選手電撃引退？</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779183556.html">都内大規模道路規制</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779161426.html">TikTok美女が衝撃のメイク術!</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779152854.html">TikTokで大流行中！最新美容トレンド</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779142297.html">TikTokで大流行！美容の新常識</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="news_1779134941.html">TikTokで大流行中！</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="undefined">undefined</a></li>
-            <li><span class="date">[2026/5/19]</span> <a href="undefined">undefined</a></li>
-            
-            <li><span class="date">[2026/5/18 20:59:48]</span> <a href="news_1779105587.html">飯田将成、BreakingDown12圧勝で絶対王者への道か　次戦への期待高まる</a></li></ul>
-        </div>
-        <div class="notice-box">
-            <strong>【編集部より重要なお知らせ】</strong><br>
-            当メディアでは、読者の皆様に安心して信頼性の高い情報をご利用いただけるよう、配信前に誹謗中傷表現の厳格なセルフチェックシステムを統合し、健全なメディア運営を徹底しております。
-        </div>
+        <h1>🎙️ SNSトレンドニュース速報 (独自解説)</h1>
+        <div id="news-container" class="loading">最新の独自記事を読み込み中...</div>
     </div>
-    <footer>&copy; 2026 SNS TREND NEWS. All Rights Reserved.</footer>
+
+    <script>
+        const USER = "yamazousuzuki203-afk";
+        const REPO = "sns-news-site";
+        
+        async function loadNews() {
+            const container = document.getElementById('news-container');
+            try {
+                const listUrl = `https://api.github.com/repos/${USER}/${REPO}/contents/`;
+                const response = await fetch(listUrl);
+                if (!response.ok) throw new Error('一覧の取得に失敗しました');
+                const files = await response.json();
+
+                // 自動生成されたファイルを最大15件抽出（新しい順）
+                const jsonFiles = files
+                    .filter(file => file.name.endsWith('.json') && file.name.includes('_'))
+                    .reverse()
+                    .slice(0, 15);
+
+                if (jsonFiles.length === 0) {
+                    container.innerHTML = '<div style="text-align:center;">新着記事を準備中です。</div>';
+                    container.classList.remove('loading');
+                    return;
+                }
+
+                container.innerHTML = ''; 
+
+                for (const file of jsonFiles) {
+                    try {
+                        const fileRes = await fetch(file.download_url);
+                        const article = await fileRes.json();
+
+                        // データのズレ（titleやcontent、bodyなど）を強引にカバーして抽出
+                        const displayTitle = article.title || "【ニュース速報】";
+                        const displayBody = article.content || article.body || "本文の解析中...";
+                        const displayPrompt = article.video_prompt || "プロンプトなし";
+                        const postDate = article.date ? new Date(article.date).toLocaleString('ja-JP') : '最新時事解説';
+
+                        const card = document.createElement('div');
+                        card.className = 'article-card';
+                        card.innerHTML = `
+                            <div class="article-title">${displayTitle}</div>
+                            <div class="article-meta">配信: ${postDate}</div>
+                            <div class="article-body">${displayBody}</div>
+                            <div class="video-prompt-box">
+                                <div class="video-prompt-title">🎬 動画生成イメージ</div>
+                                <code style="color: #00ff66;">${displayPrompt}</code>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    } catch (e) {
+                        console.error('ファイル読み込みスキップ:', e);
+                    }
+                }
+                if(container.innerHTML === "") {
+                    container.innerHTML = '<div style="text-align:center;">記事データを読み込み中です。</div>';
+                }
+            } catch (error) {
+                container.innerHTML = `<div style="text-align:center; color:red;">エラーが発生しました: ${error.message}</div>`;
+            }
+        }
+        loadNews();
+    </script>
 </body>
 </html>
