@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SNSトレンドニュース速報</title>
     <style>
-        :root { --bg-color: #121212; --card-bg: #1e1e1e; --text-color: #e0e0e0; --accent-color: #ff4500; }
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --text-color: #e0e0e0; --accent-color: #ff4500; --link-color: #1e90ff; }
         body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 20px; }
         .container { max-width: 800px; margin: 0 auto; }
         h1 { text-align: center; color: #fff; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; font-size: 24px; }
         .loading { text-align: center; font-size: 16px; color: #aaa; margin-top: 50px; }
         .article-card { background: var(--card-bg); border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); border-left: 5px solid var(--accent-color); }
-        .article-title { font-size: 18px; margin-top: 0; margin-bottom: 10px; color: #fff; font-weight: bold; }
+        .article-title { font-size: 18px; margin-top: 0; margin-bottom: 10px; color: #fff; font-weight: bold; line-height: 1.4; }
         .article-meta { font-size: 12px; color: #888; margin-bottom: 15px; }
-        .article-body { font-size: 15px; line-height: 1.7; white-space: pre-wrap; color: #ccc; }
-        .video-prompt-box { background: #2a2a2a; padding: 10px; border-radius: 4px; font-size: 12px; margin-top: 15px; border: 1px dashed #444; }
+        .article-body { font-size: 15px; line-height: 1.7; white-space: pre-wrap; color: #ccc; margin-bottom: 15px; }
+        .news-link { display: inline-block; background: #252525; color: var(--link-color); padding: 6px 12px; border-radius: 4px; font-size: 13px; text-decoration: none; border: 1px solid #333; margin-top: 5px; margin-bottom: 15px; transition: 0.2s; }
+        .news-link:hover { background: #333; color: #fff; }
+        .video-prompt-box { background: #2a2a2a; padding: 10px; border-radius: 4px; font-size: 12px; border: 1px dashed #444; }
         .video-prompt-title { font-weight: bold; color: var(--accent-color); margin-bottom: 5px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🎙️ SNSトレンドニュース速報 (独自解説)</h1>
-        <div id="news-container" class="loading">最新の独自記事を読み込み中...</div>
+        <div id="news-container" class="loading">最新の独自記事を自動解析して読み込み中...</div>
     </div>
 
     <script>
@@ -36,7 +38,7 @@
                 if (!response.ok) throw new Error('一覧の取得に失敗しました');
                 const files = await response.json();
 
-                // _0.json などの新しく自動生成されたファイルを最大15件抽出（新しい順）
+                // _0.json などの自動生成されたファイルを最大15件抽出（新しい順）
                 const jsonFiles = files
                     .filter(file => file.name.endsWith('.json') && file.name.includes('_'))
                     .reverse()
@@ -55,36 +57,65 @@
                         const fileRes = await fetch(file.download_url);
                         const article = await fileRes.json();
 
-                        // ★どんなデータ名で入っていても強引に見つけ出す超万能ロジック
-                        let displayTitle = article.title || article.headline || article.news_title;
-                        let displayBody = article.content || article.body || article.article || article.text || article.main_text;
-                        let displayPrompt = article.video_prompt || article.prompt || article.image_prompt;
+                        let title = "";
+                        let body = "";
+                        let prompt = "";
+                        let sourceUrl = "";
+                        let postDate = article.date || "";
 
-                        // 万が一データが深い階層（オブジェクト型）になっていた場合の救済
-                        if (typeof article.article === 'object' && article.article !== null) {
-                            displayTitle = displayTitle || article.article.title || article.article.headline;
-                            displayBody = displayBody || article.article.body || article.article.content;
-                            displayPrompt = displayPrompt || article.article.video_prompt;
+                        // 全てのデータ項目（キーと値）をチェックして自動で仕分ける
+                        for (const [key, val] of Object.entries(article)) {
+                            if (typeof val !== 'string') continue;
+                            
+                            const cleanVal = val.trim();
+                            
+                            // URLの判定（関連ニュースリンク）
+                            if (cleanVal.startsWith('http://') || cleanVal.startsWith('https://')) {
+                                sourceUrl = cleanVal;
+                            } 
+                            // 日付の判定
+                            else if (cleanVal.match(/^\d{4}[-/]\d{2}[-/]\d{2}/) || cleanVal.includes('T')) {
+                                if (!postDate) postDate = cleanVal;
+                            } 
+                            // 長い文章は本文（body）
+                            else if (cleanVal.length > 150 || cleanVal.includes('\n') || cleanVal.includes('。')) {
+                                body = cleanVal;
+                            } 
+                            // 「プロンプト」や「シーン」という言葉が含まれる、または英語がメインなら動画プロンプト
+                            else if (key.includes('prompt') || cleanVal.includes('プロンプト') || cleanVal.includes('映像') || (cleanVal.length > 40 && !cleanVal.includes('【'))) {
+                                prompt = cleanVal;
+                            } 
+                            // 短くてそれ以外のものはタイトル
+                            else if (cleanVal.length > 5 && !title) {
+                                title = cleanVal;
+                            }
                         }
 
-                        // それでも見つからない場合の最終手段
-                        if (!displayTitle || !displayBody) {
-                            const values = Object.values(article);
-                            displayTitle = displayTitle || values[0] || "【ニュース速報】";
-                            displayBody = displayBody || values[1] || "本文を自動解析中...";
-                        }
+                        // バックアップロジック（うまく仕分けられなかった場合の最終埋め合わせ）
+                        const allStrings = Object.values(article).filter(v => typeof v === 'string' && v.length > 0);
+                        if (!title) title = article.title || article.headline || allStrings.find(s => s.length < 50 && !s.startsWith('http')) || "【ニュース速報】";
+                        if (!body) body = article.content || article.body || allStrings.find(s => s.length > 50) || "記事本文の生成を確認中...";
+                        if (!prompt) prompt = article.video_prompt || "プロンプト自動調整中";
 
-                        const postDate = article.date ? new Date(article.date).toLocaleString('ja-JP') : '最新時事解説';
+                        // 日付の見栄え調整
+                        const displayDate = postDate ? new Date(postDate).toLocaleString('ja-JP') : '最新時事解説';
+
+                        // 関連ニュースのリンクボタンを作るか判定
+                        let linkHtml = "";
+                        if (sourceUrl) {
+                            linkHtml = `<a href="${sourceUrl}" target="_blank" class="news-link">🔗 元の関連ニュースを見る</a>`;
+                        }
 
                         const card = document.createElement('div');
                         card.className = 'article-card';
                         card.innerHTML = `
-                            <div class="article-title">${displayTitle}</div>
-                            <div class="article-meta">配信: ${postDate}</div>
-                            <div class="article-body">${displayBody}</div>
+                            <div class="article-title">${title}</div>
+                            <div class="article-meta">配信: ${displayDate}</div>
+                            <div class="article-body">${body}</div>
+                            ${linkHtml}
                             <div class="video-prompt-box">
                                 <div class="video-prompt-title">🎬 動画生成イメージ</div>
-                                <code style="color: #00ff66;">${displayPrompt || 'プロンプト作成中'}</code>
+                                <code style="color: #00ff66;">${prompt}</code>
                             </div>
                         `;
                         container.appendChild(card);
