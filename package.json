@@ -1,10 +1,6 @@
 {
   "name": "sns-news-site",
   "version": "1.0.0",
-  "scripts": {
-    "start": "serve ."
-  },
-  "dependencies": {
-    "serve": "^14.2.0"
-  }
+  "description": "SNS News Cloud",
+  "private": true
 }
