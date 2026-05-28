@@ -1,55 +1,81 @@
-
-            <li class="post-item" style="padding:15px; border-bottom:1px solid #333; display:flex; align-items:flex-start;">
-                <img src="https://images.unsplash.com/photo-1509824227185-9c5a01ceba0d?q=80&w=800&auto=format&fit=crop" style="width:120px; height:80px; object-fit:cover; border-radius:4px; margin-right:15px; filter: grayscale(40%) contrast(120%) brightness(70%); border: 1px solid #333;" alt="thumbnail">
-                <div style="display:flex; flex-direction:column;">
-                    <span style="color:#888; font-size:12px; margin-bottom:5px; font-family:monospace;">[2026/05/28]</span>
-                    <a href="news/yatsushiro-oshoku-kokoro-no-yami-1779970283427.html" style="color:#e0e0e0; text-decoration:none; font-size:16px; font-weight:bold; line-height:1.4;">腐敗の連鎖：八代市議汚職事件が映し出す、心の奥底に潜む怪物</a>
-                </div>
-            </li>
-            <li class="post-item" style="padding:15px; border-bottom:1px solid #333; display:flex; align-items:flex-start;">
-                <img src="https://images.unsplash.com/photo-1509824227185-9c5a01ceba0d?q=80&w=800&auto=format&fit=crop" style="width:120px; height:80px; object-fit:cover; border-radius:4px; margin-right:15px; filter: grayscale(40%) contrast(120%) brightness(70%); border: 1px solid #333;" alt="thumbnail">
-                <div style="display:flex; flex-direction:column;">
-                    <span style="color:#888; font-size:12px; margin-bottom:5px; font-family:monospace;">[2026/05/28]</span>
-                    <a href="news/yatsushiro-shigi-taiho-yami-sinri-1779968178498.html" style="color:#e0e0e0; text-decoration:none; font-size:16px; font-weight:bold; line-height:1.4;">閲覧注意：金と権力の蜜月が招く、魂の転落劇。八代市議逮捕が暴く心の闇</a>
-                </div>
-            </li>
-            <li class="post-item">
-                <img src="https://images.unsplash.com/photo-1509824227185-9c5a01ceba0d?q=80&w=800&auto=format&fit=crop" class="post-thumb" alt="thumbnail">
-                <div class="post-info">
-                    <span class="post-date">[2026/05/28]</span>
-                    <a class="post-link" href="news/naze-misshitsu-wa-hito-o-kurawaseru-no-ka-kokoro-no-yami-to-ijo-hanzai-no-shin-en-1779913763940.html">【深層】なぜ『密室』は人を狂わせるのか？ 黒星警部が暴く、人間の心の闇と異常犯罪の深淵【閲覧注意】</a>
-                </div>
-            </li><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ダークジャーナリズム専門ニュース</title>
     <style>
-        body { background-color: #121212; color: #e0e0e0; font-family: 'Helvetica Neue', Arial, sans-serif; padding: 20px; text-align: center; }
-        .container { max-width: 800px; margin: 0 auto; background: #1e1e1e; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: left; }
-        h1 { color: #ff3333; text-align: center; border-bottom: 2px solid #ff3333; padding-bottom: 10px; }
-        .post-title { font-size: 24px; font-weight: bold; margin-top: 20px; }
-        .post-title a { color: #ff6666; text-decoration: none; }
-        .post-title a:hover { text-decoration: underline; }
-        .post-content { margin-top: 15px; line-height: 1.8; color: #cccccc; white-space: pre-wrap; }
-        footer { margin-top: 40px; text-align: center; color: #555555; font-size: 12px; }
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #1e1e1e;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff3333;
+        }
+        header h1 {
+            color: #ff3333;
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+        header p {
+            color: #888;
+            margin: 10px 0 0 0;
+            font-size: 14px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        /* GASから自動挿入される記事ブロックの調整 */
+        .post-item {
+            background-color: #1e1e1e;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #222;
+            transition: background-color 0.2s;
+        }
+        .post-item:hover {
+            background-color: #252525;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #555555;
+            font-size: 12px;
+            border-top: 1px solid #222;
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>ダークジャーナリズム専門ニュース</h1>
+        <p>社会の深淵に潜む事件の真実を追う、全自動更新メディア</p>
+    </header>
+
     <div class="container">
-        <h1>ダークジャーナリズム専門サイト</h1>
-        <div class="post-title">
-            <a href="https://yamazousuzuki203-afk.github.io/sns-news-site/">最新記事：密室の狂宴：黒星警部が覗き見た、人間の魂の底なし沼</a>
-        </div>
-        <div class="post-content">「ザ・ミステリー『黒星警部の密室捜査』」――このタイトルが示すのは、単なる知的なパズルではない。それは、閉ざされた空間で繰り広げられる、人間の狂気と絶望が織りなす極限のドラマ、その深淵への誘いだ。密室。それは物理的な隔絶であると同時に、関係性の断絶、そして何よりも、犯人の屈折した精神の最後の砦である。
-
-一体、どのような憎悪、嫉妬、あるいは病的な執着が、被害者を外界から完全に遮断された小宇宙で葬り去ることを企図させるのか。そこには、単なる殺害を超えた、魂の深部を抉るような「演出」が潜んでいる。犯人は、自らの歪んだ願望を成就させるために、周到に、そして冷酷に、密室という名の舞台を設える。その空間は、被害者にとっては最後の牢獄であり、犯人にとっては自らの狂気を完璧に隠蔽しようとする、傲慢な挑戦状なのだ。
-
-「黒星警部」の眼差しは、単にトリックの解明に留まらない。彼は、この閉ざされた空間の片隅に、ドロドロとした人間の業が染み付いているのを見ているはずだ。被害者の最後の叫び、犯人の冷笑、あるいはその裏に隠された、あまりにも人間的な孤独と絶望。我々が画面越しに垣間見る密室の闇は、果たして本当にフィクションなのか？SNSでは「完璧な密室こそ、犯人の心理が最も露わになる場所だ」という声や、「一度足を踏み入れたら決して出られない、心理的な密室は現実にも存在する」といった、深く考察めいた投稿が散見される。
-
-この事件が我々に突きつけるのは、人間の心の奥底に潜む、制御不能な「狂気」の存在だ。密室は、その狂気が最終的に行き着く場所、あるいは最後の避難場所なのかもしれない。黒星警部が次々に解き明かす密室の謎は、我々自身の心の奥底に眠る、禁断の扉を開くトリガーとなるだろう。そして、その扉の向こうに広がるのは、決して目を背けることのできない、人間の本性の暗黒面なのだ。背筋を凍らせるような真実が、そこに横たわっている。</div>
+        <ul class="post-list">
+</ul>
     </div>
-    <footer>&copy; 2026 ダークジャーナリズム専門ニュース All Rights Reserved.</footer>
+
+    <footer>
+        &copy; 2026 ダークジャーナリズム専門ニュース All Rights Reserved.
+    </footer>
+
 </body>
 </html>
