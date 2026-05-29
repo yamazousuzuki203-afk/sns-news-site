@@ -2,13 +2,34 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ダークジャーナリズム専門ニュース</title>
+    <style>
+        body { background-color: #121212; color: #e0e0e0; font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; }
+        header { background-color: #1e1e1e; padding: 40px 20px; text-align: center; border-bottom: 3px solid #ff3333; }
+        header h1 { color: #ff3333; margin: 0; font-size: 28px; }
+        header p { color: #888; margin: 10px 0 0 0; font-size: 14px; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .post-list { list-style: none; padding: 0; margin: 0; }
+        footer { text-align: center; padding: 40px 20px; color: #555555; font-size: 12px; border-top: 1px solid #222; margin-top: 60px; }
+    </style>
 </head>
 <body>
     <header>
         <h1>ダークジャーナリズム専門ニュース</h1>
+        <p>社会の深淵に潜む事件の真実を追う、全自動更新メディア</p>
     </header>
-    <ul id="post-list-container">
+    <div class="container">
+        <ul class="post-list">
+            <li class="post-item" style="padding:15px; border-bottom:1px solid #333; display:flex; align-items:flex-start;">
+                <img src="assets/tochigi-goutou-satsujin-48sai-otoko-koukai-tehai-lupin-yakka-1780048148013.jpg" style="width:120px; height:80px; object-fit:cover; border-radius:4px; margin-right:15px; filter: grayscale(40%) contrast(120%) brightness(70%); border: 1px solid #333;" alt="thumbnail">
+                <div style="display:flex; flex-direction:column;">
+                    <span style="color:#888; font-size:12px; margin-bottom:5px; font-family:monospace;">[2026/05/29]</span>
+                    <a href="news/tochigi-goutou-satsujin-48sai-otoko-koukai-tehai-lupin-yakka-1780048148013.html" style="color:#e0e0e0; text-decoration:none; font-size:16px; font-weight:bold; line-height:1.4;">栃木 強盗殺人容疑で48歳男を公開手配 「ルパンやる？」と犯行持ちかけか</a>
+                </div>
+            </li>
         </ul>
+    </div>
+    <footer>&copy; 2026 ダークジャーナリズム専門ニュース All Rights Reserved.</footer>
 </body>
 </html>
